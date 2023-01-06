@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
+    [SerializeField]
     public HealthBar healthBar;
 
     private void Awake() {
@@ -31,12 +32,12 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            heal(20);
+            Heal(20);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            takeDamage(20);
+            TakeDamage(20);
         }
     }
 
@@ -47,20 +48,29 @@ public class PlayerController : MonoBehaviour {
         // TODO: Maybe set targetPosition to currentPosition when the player is stopped. Then, the player
         // won't continually try to reach an unreachable targetPosition when blocked by a collider.
     }
-    public void takeDamage(int damage)
+    
+    public void TakeDamage(int damage)
     {
-        if (currentHealth > 0)
+       
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        
+        if (currentHealth < 0)
         {
-            currentHealth -= damage;
-            healthBar.SetHealth(currentHealth);
-        }      
+            currentHealth = 0;
+        }
     }
-    public void heal(int heal)
+    
+    public void Heal(int heal)
     {
-        if (currentHealth < maxHealth)
+       
+        currentHealth += heal;
+        healthBar.SetHealth(currentHealth);
+
+        if (currentHealth > maxHealth)
         {
-            currentHealth += heal;
-            healthBar.SetHealth(currentHealth);
-        }       
+            currentHealth = maxHealth;
+        }
+
     }
 }
