@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
     [SerializeField]
-    public HealthBar healthBar;
+    private HealthBar healthBar;
 
     private void Awake() {
         rb2D = GetComponent<Rigidbody2D>();
