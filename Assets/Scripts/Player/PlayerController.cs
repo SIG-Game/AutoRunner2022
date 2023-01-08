@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField]
@@ -24,14 +25,15 @@ public class PlayerController : MonoBehaviour {
             return;
         }
 
-        if (Input.GetMouseButtonDown(0)) {
-            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-
-        // This may be unnecessary because it seems that touches are registered as clicks.
         if (Input.touchCount > 0) {
             Touch touch = Input.GetTouch(0);
-            targetPosition = Camera.main.ScreenToWorldPoint(touch.position);
+
+            if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject(touch.fingerId)) {
+                targetPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            }
+        }
+        else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         if (Input.GetKeyDown(KeyCode.H))
