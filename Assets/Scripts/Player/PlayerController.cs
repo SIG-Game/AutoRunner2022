@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
+        if (PauseController.Instance.GamePaused) {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0)) {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
@@ -48,22 +52,22 @@ public class PlayerController : MonoBehaviour {
         // TODO: Maybe set targetPosition to currentPosition when the player is stopped. Then, the player
         // won't continually try to reach an unreachable targetPosition when blocked by a collider.
     }
-    
+
     public void TakeDamage(int damage)
     {
-       
+
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        
+
         if (currentHealth < 0)
         {
             currentHealth = 0;
         }
     }
-    
+
     public void Heal(int heal)
     {
-       
+
         currentHealth += heal;
         healthBar.SetHealth(currentHealth);
 
