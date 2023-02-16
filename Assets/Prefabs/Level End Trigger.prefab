@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2617945921448679912}
   - component: {fileID: 2617945921448679911}
   m_Layer: 0
-  m_Name: Win Condition
+  m_Name: Level End Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
