@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private int currentHealth;
 
+    public int getMaxHealth() { return maxHealth; }
+    public int getCurrentHealth() { return currentHealth; }
+
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
     [SerializeField]
