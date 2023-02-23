@@ -9,9 +9,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private int currentHealth;
 
-    public int getMaxHealth() { return maxHealth; }
-    public int getCurrentHealth() { return currentHealth; }
-
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
     [SerializeField]
@@ -22,6 +19,9 @@ public class PlayerController : MonoBehaviour {
         targetPosition = rb2D.position;
         currentHealth = maxHealth;
     }
+
+    public int GetMaxHealth() => maxHealth;
+    public int GetCurrentHealth() => currentHealth;
 
     private void Update() {
         if (PauseController.Instance.GamePaused) {
