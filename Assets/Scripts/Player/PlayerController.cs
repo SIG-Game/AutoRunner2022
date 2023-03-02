@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour {
         currentHealth = maxHealth;
     }
 
+    public int GetMaxHealth() => maxHealth;
+    public int GetCurrentHealth() => currentHealth;
+
     private void Update() {
         if (PauseController.Instance.GamePaused) {
             return;
