@@ -1,5 +1,3 @@
-// Proj = Projectile
-
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
@@ -13,7 +11,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField]
     private float projDeviation = 1f;
 
-    // These varaibles need to be set on creation of the instance
+    // These variables need to be set on creation of the instance
     public string targetName; // "Player" to damage players, "Enemy" to damage enemies
     public Transform target; // Transform of gameObject to target
 
@@ -36,7 +34,7 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D coll2D)
+    void OnTriggerEnter2D(Collider2D coll2D)
     {
         if (targetName == null)
         {
