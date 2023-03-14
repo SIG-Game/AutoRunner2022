@@ -101,5 +101,5 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   fireRate: 1
-  proj: {fileID: 9051901607927635485, guid: e0eda30b57d8cef4e971435c7bf09c0d, type: 3}
-  playerPos: {fileID: 0}
+  projectile: {fileID: 9051901607927635485, guid: e0eda30b57d8cef4e971435c7bf09c0d, type: 3}
+  player: {fileID: 0}

@@ -11,9 +11,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float fireRate = 1f;
     [SerializeField]
-    private GameObject proj;
+    private GameObject projectile;
     [SerializeField]
-    private Transform playerPos;
+    private Transform player;
 
     float nextFire;
 
@@ -33,7 +33,6 @@ public class EnemyController : MonoBehaviour
     //This function is used to have enemies both take and recieve damage. call change health with negative values to take damage, and positive values to heal damage.
     public void ChangeHealth(int healthLost)
     {
-        Debug.Log(healthLost);
         currentHealth += healthLost;
         if(currentHealth <= 0)
         {
@@ -68,9 +67,14 @@ public class EnemyController : MonoBehaviour
         {
             if (Time.time > nextFire)
             {
-                Instantiate(proj, transform.position, Quaternion.identity);
-                proj.GetComponent<ProjController>().targetPos = playerPos;
-                proj.GetComponent<ProjController>().target = "Player";
+                Instantiate(projectile, transform.position, Quaternion.identity);
+                ProjectileController proj = projectile.GetComponent<ProjectileController>();
+
+                if (proj != null)
+                {
+                    proj.targetName = "Player";
+                    proj.target = player;
+                }
                 nextFire = Time.time + fireRate;
             }
         }
