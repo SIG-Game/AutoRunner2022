@@ -11,8 +11,10 @@ public class ProjectileController : MonoBehaviour
     [SerializeField]
     private float projDeviation = 1f;
 
+    public enum TargetName { Player, Enemy };
+
     // These variables need to be set on creation of the instance
-    public string targetName; // "Player" to damage players, "Enemy" to damage enemies
+    public TargetName tName; // "Player" to damage players, "Enemy" to damage enemies
     public Transform target; // Transform of gameObject to target
 
     void Start()
@@ -36,37 +38,27 @@ public class ProjectileController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll2D)
     {
-        if (targetName == null)
-        {
-            Debug.LogError("Error: Projectile has no target name");
-        }
-        else if (targetName == "Player")
+        if (tName == TargetName.Player)
         {
             PlayerController player = coll2D.GetComponent<PlayerController>();
 
             if (player != null)
             {
                 player.TakeDamage(projDamage);
-                Destroy(gameObject);
-            }
-            else
-            {
-                Debug.LogError("Error: Player hit by projectile has no controller");
             }
         }
-        else if (targetName == "Enemy")
+        else if (tName == TargetName.Enemy)
         {
             EnemyController enemy = coll2D.GetComponent<EnemyController>();
 
             if (enemy != null)
             {
                 enemy.ChangeHealth(-1 * projDamage);
-                Destroy(gameObject);
             }
-            else
-            {
-                Debug.LogError("Error: Enemy hit by projectile has no controller");
-            }
+        }
+        if (!coll2D.isTrigger)
+        {
+            Destroy(gameObject);
         }
     }
 }

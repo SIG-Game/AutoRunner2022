@@ -72,7 +72,7 @@ public class EnemyController : MonoBehaviour
 
                 if (proj != null)
                 {
-                    proj.targetName = "Player";
+                    proj.tName = ProjectileController.TargetName.Player;
                     proj.target = player;
                 }
                 nextFire = Time.time + fireRate;
