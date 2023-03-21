@@ -133,10 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 93957546}
   - component: {fileID: 93957545}
-  - component: {fileID: 93957548}
-  - component: {fileID: 93957549}
+  - component: {fileID: 93957550}
   m_Layer: 0
-  m_Name: pixilart-drawing (2)
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +161,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b41ab205b4fd5ed49a139e421dafefb5, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -182,15 +181,15 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 6a2c969b3bc07ac46a0c1911fe1bcd27, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: ff6f03d3675cf1c419fdda4746160735, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
-  m_Size: {x: 1.28, y: 5.12}
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
+  m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
@@ -203,13 +202,13 @@ Transform:
   m_GameObject: {fileID: 93957544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -808.71, y: 119.97, z: 0}
-  m_LocalScale: {x: 0.011, y: 0.011, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &93957548
+--- !u!114 &93957550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,30 +217,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 93957544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba4164b159fd264b8a020a98821b9e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 35971208ffe66ec4c8ae05d503b7f4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
-  bgRenderer: {fileID: 93957545}
---- !u!114 &93957549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93957544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac535aabc3a687a4e8df8a61bd7cdf5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprRend: {fileID: 93957545}
-  canvas:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
+  height: 4
 --- !u!224 &378006063 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5010596298839452027, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
@@ -283,7 +262,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5568628, g: 0.08235294, b: 0.08235294, a: 0}
+  m_BackGroundColor: {r: 0.6392157, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -373,7 +352,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1151311345 stripped
 RectTransform:
@@ -533,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215622920849717729, guid: c9cb149ef1a6c1d49b10c17aad617566, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5215622920849717729, guid: c9cb149ef1a6c1d49b10c17aad617566, type: 3}
       propertyPath: m_SortingOrder
@@ -541,11 +520,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215622920849717729, guid: c9cb149ef1a6c1d49b10c17aad617566, type: 3}
       propertyPath: m_SortingLayerID
-      value: 2111851579
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5215622920849717734, guid: c9cb149ef1a6c1d49b10c17aad617566, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5215622920849717734, guid: c9cb149ef1a6c1d49b10c17aad617566, type: 3}
       propertyPath: m_LocalPosition.x
@@ -658,7 +637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1814142011
 GameObject:
@@ -755,7 +734,7 @@ RectTransform:
   - {fileID: 1151311345}
   - {fileID: 378006063}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

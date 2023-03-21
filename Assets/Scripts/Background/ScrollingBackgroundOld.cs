@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//
 // Special thanks to Root Games for scrolling background explanation from Unity 2D: Scrolling Background.
 // [Video]. Youtube. Retrieved January 23, 2023 from https://www.youtube.com/watch?v=Wz3nbQPYwss
-
+//
+// Old script for scrolling the background (no longer used)
+//
 public class ScrollingBackgroundOld : MonoBehaviour
 {
     public float speed;
