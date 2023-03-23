@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField]
@@ -9,6 +10,10 @@ public class PlayerController : MonoBehaviour {
     private int maxHealth = 100;
     [SerializeField]
     private int currentHealth;
+    [SerializeField]
+    private int healthDecayDamage = 5;
+    [SerializeField]
+    private float healthDecayTime = 5f;
 
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
@@ -19,6 +24,7 @@ public class PlayerController : MonoBehaviour {
         rb2D = GetComponent<Rigidbody2D>();
         targetPosition = rb2D.position;
         currentHealth = maxHealth;
+        InvokeRepeating("HealthDecay", healthDecayTime, healthDecayTime);
     }
 
     public int GetMaxHealth() => maxHealth;
@@ -27,6 +33,14 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         if (PauseController.Instance.GamePaused) {
             return;
+        }
+        
+        if (GetCurrentHealth() <= 0)
+        {
+
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+
         }
 
         if (Input.touchCount > 0) {
@@ -49,13 +63,7 @@ public class PlayerController : MonoBehaviour {
         {
             TakeDamage(20);
         }
-        if (GetCurrentHealth() <= 0)
-        {
-            
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.name);
-          
-        }
+        
     }
 
     private void FixedUpdate() {
@@ -89,5 +97,9 @@ public class PlayerController : MonoBehaviour {
             currentHealth = maxHealth;
         }
 
+    }
+    public void HealthDecay()
+    {
+        TakeDamage(healthDecayDamage);
     }
 }
