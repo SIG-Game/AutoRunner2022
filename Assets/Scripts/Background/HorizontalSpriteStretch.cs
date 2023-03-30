@@ -6,6 +6,7 @@
 //
 // This code scales the background sprite so that it is horizontal fit to the main camera.
 //
+//
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
