@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField]
@@ -19,6 +20,9 @@ public class PlayerController : MonoBehaviour {
         targetPosition = rb2D.position;
         currentHealth = maxHealth;
     }
+
+    public int GetMaxHealth() => maxHealth;
+    public int GetCurrentHealth() => currentHealth;
 
     private void Update() {
         if (PauseController.Instance.GamePaused) {
@@ -44,6 +48,13 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(20);
+        }
+        if (GetCurrentHealth() <= 0)
+        {
+            
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+          
         }
     }
 
