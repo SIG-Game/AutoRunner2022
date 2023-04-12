@@ -80,8 +80,8 @@ public class EnemyController : MonoBehaviour
         {
             if (Time.time > nextFire)
             {
-                Instantiate(projectile, transform.position, Quaternion.identity);
-                ProjectileController proj = projectile.GetComponent<ProjectileController>();
+                GameObject projGameObject = Instantiate(projectile, transform.position, Quaternion.identity);
+                ProjectileController proj = projGameObject.GetComponent<ProjectileController>();
 
                 if (proj != null)
                 {
