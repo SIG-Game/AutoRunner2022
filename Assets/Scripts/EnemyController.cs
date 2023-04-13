@@ -23,11 +23,12 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         
-        currentHealth = maxHealth;
-        nextFire = Time.time;
+        
     }
 
     private void Awake() {
+        currentHealth = maxHealth;
+        nextFire = Time.time;
         rb2D = GetComponent<Rigidbody2D>();
         targetPosition = rb2D.position;
     }
@@ -40,6 +41,7 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
+        TargetPlayer();
         rb2D.MovePosition(Vector2.MoveTowards(rb2D.position, targetPosition, movementSpeed));
     }
 
@@ -97,7 +99,7 @@ public class EnemyController : MonoBehaviour
     {
         if (IsWithinCamera())
         {
-            targetPosition = Vector2.zero;
+            targetPosition = rb2D.position;
         }
     }
 
@@ -113,8 +115,7 @@ public class EnemyController : MonoBehaviour
     {
         if (IsWithinCamera())
         {
-            targetPosition = rb2D.position + (Vector2)(Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.right * distance);
-
+            targetPosition = rb2D.position + (Vector2)(Quaternion.Euler(0f, 0f, angle) * Vector3.right) * distance;
         }
     }
 }
