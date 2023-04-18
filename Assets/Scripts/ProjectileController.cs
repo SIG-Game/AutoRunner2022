@@ -16,6 +16,7 @@ public class ProjectileController : MonoBehaviour
     // These variables need to be set on creation of the instance
     public TargetName tName; // "Player" to damage players, "Enemy" to damage enemies
     public Transform target; // Transform of gameObject to target
+    public Collider2D senderColl; // Collider of gameObject that is firing the proj
 
     void Start()
     {
@@ -56,7 +57,7 @@ public class ProjectileController : MonoBehaviour
                 enemy.ChangeHealth(-1 * projDamage);
             }
         }
-        if (!coll2D.isTrigger)
+        if (coll2D != senderColl && !coll2D.isTrigger)
         {
             Destroy(gameObject);
         }
