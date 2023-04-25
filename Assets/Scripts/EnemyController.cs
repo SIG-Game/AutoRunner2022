@@ -89,7 +89,6 @@ public class EnemyController : MonoBehaviour
 
             if (proj != null)
             {
-                proj.tName = ProjectileController.TargetName.Player;
                 proj.target = playerTransform;
                 proj.senderColl = null; // When Enemies have colliders,
                                         // TODO: Make a variable for Enemy's collider and put it here

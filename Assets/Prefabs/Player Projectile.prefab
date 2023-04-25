@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -8149949254575893394, guid: e0eda30b57d8cef4e971435c7bf09c0d, type: 3}
+      propertyPath: senderColl
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -8149949254575893394, guid: e0eda30b57d8cef4e971435c7bf09c0d, type: 3}
+      propertyPath: wantDeviation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -1483658460662685277, guid: e0eda30b57d8cef4e971435c7bf09c0d, type: 3}
       propertyPath: m_Color.b
       value: 0.74509805

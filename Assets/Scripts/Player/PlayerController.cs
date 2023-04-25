@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        if (PlayerNotMoving() && enemyHash.Count > 0) { RangedAttack(); }
+        if (rb2D.position == targetPosition && enemyHash.Count > 0) { RangedAttack(); }
 
         if (Input.GetKeyDown(KeyCode.H)) { Heal(20); }
 
@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour
 
             if (proj != null)
             {
-                proj.tName = ProjectileController.TargetName.Enemy;
                 proj.target = FindTargetEnemy();
                 proj.senderColl = playerColl;
             }
@@ -108,8 +107,6 @@ public class PlayerController : MonoBehaviour
         }
         return closeEnem;
     }
-
-    private bool PlayerNotMoving() => true;
 
     public void TakeDamage(int damage)
     {

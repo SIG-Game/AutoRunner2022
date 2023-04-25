@@ -10,12 +10,14 @@ public class ProjectileController : MonoBehaviour
     private bool wantDeviation = true;
     [SerializeField]
     private float projDeviation = 1f;
+    public TargetName tName; // "Player" to damage players, "Enemy" to damage enemies
 
     public enum TargetName { Player, Enemy };
 
     // These variables need to be set on creation of the instance
-    public TargetName tName; // "Player" to damage players, "Enemy" to damage enemies
+    [HideInInspector]
     public Transform target; // Transform of gameObject to target
+    [HideInInspector]
     public Collider2D senderColl; // Collider of gameObject that is firing the proj
 
     void Start()
