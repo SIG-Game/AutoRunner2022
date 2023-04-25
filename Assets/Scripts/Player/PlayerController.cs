@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -62,6 +63,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H)) { Heal(20); }
 
         if (Input.GetKeyDown(KeyCode.Space)) { TakeDamage(20); }
+
+        if (GetCurrentHealth() <= 0)
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+        }
     }
 
     private void FixedUpdate()
