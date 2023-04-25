@@ -14,20 +14,35 @@ public class EnemyController : MonoBehaviour
     private GameObject projectile;
     [SerializeField]
     private Transform player;
+    private Rigidbody2D rb2D;
+    private Vector2 targetPosition;
 
     float nextFire;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        
+    }
+
+    private void Awake() {
         currentHealth = maxHealth;
         nextFire = Time.time;
+        rb2D = GetComponent<Rigidbody2D>();
+        targetPosition = rb2D.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         RangedAttack();
+    }
+
+    void FixedUpdate()
+    {
+        TargetPlayer();
+        rb2D.MovePosition(Vector2.MoveTowards(rb2D.position, targetPosition, movementSpeed));
     }
 
     //This function is used to have enemies both take and recieve damage. call change health with negative values to take damage, and positive values to heal damage.
@@ -77,6 +92,30 @@ public class EnemyController : MonoBehaviour
                 }
                 nextFire = Time.time + fireRate;
             }
+        }
+    }
+
+    void TargetStill()
+    {
+        if (IsWithinCamera())
+        {
+            targetPosition = rb2D.position;
+        }
+    }
+
+    void TargetPlayer()
+    {
+        if (IsWithinCamera())
+        {
+            targetPosition = player.position;
+        }
+    }
+
+    void TargetLine(float distance, float angle)
+    {
+        if (IsWithinCamera())
+        {
+            targetPosition = rb2D.position + (Vector2)(Quaternion.Euler(0f, 0f, angle) * Vector3.right) * distance;
         }
     }
 }
