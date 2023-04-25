@@ -23,15 +23,19 @@ public class ProjectileController : MonoBehaviour
     void Start()
     {
         Rigidbody2D projRb = GetComponent<Rigidbody2D>();
-        Vector2 projVelocity = (target.position - transform.position).normalized * projMoveSpeed;
 
-        if (wantDeviation)
+        if (target != null)
         {
-            projVelocity.x = Random.Range(projVelocity.x - projDeviation, projVelocity.x + projDeviation);
-            projVelocity.y = Random.Range(projVelocity.y - projDeviation, projVelocity.y + projDeviation);
+            Vector2 projVelocity = (target.position - transform.position).normalized * projMoveSpeed;
+
+            if (wantDeviation)
+            {
+                projVelocity.x = Random.Range(projVelocity.x - projDeviation, projVelocity.x + projDeviation);
+                projVelocity.y = Random.Range(projVelocity.y - projDeviation, projVelocity.y + projDeviation);
+            }
+            projRb.velocity = projVelocity;
+            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan(projVelocity.y / projVelocity.x));
         }
-        projRb.velocity = projVelocity;
-        transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan(projVelocity.y / projVelocity.x));
     }
 
     void OnBecameInvisible()

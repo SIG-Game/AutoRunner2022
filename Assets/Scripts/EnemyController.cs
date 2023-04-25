@@ -10,27 +10,23 @@ public class EnemyController : MonoBehaviour
     private int currentHealth;
     [SerializeField]
     private float fireRate = 1f;
+    private float nextFire;
+    private bool inHash = false;
+
     [SerializeField]
     private GameObject projectile;
     [SerializeField]
     private PlayerController player;
-    private Transform playerTransform;
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
-
-    private float nextFire;
-    private bool inHash = false;
     private Transform playerTransform,
                       thisTransform;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-        
-    }
+    void Start() {  }
 
-    private void Awake() {
+    private void Awake()
+    {
         currentHealth = maxHealth;
         nextFire = Time.time;
         playerTransform = player.GetComponent<Transform>();
@@ -99,40 +95,29 @@ public class EnemyController : MonoBehaviour
 
     void RangedAttack()
     {
-        if (IsWithinCamera() && Time.time > nextFire)
+        if (IsWithinCamera() && Time.time > nextFire && playerTransform != null)
         {
-            Instantiate(projectile, transform.position, Quaternion.identity);
-            ProjectileController proj = projectile.GetComponent<ProjectileController>();
-            if (Time.time > nextFire)
-            {
-                GameObject projGameObject = Instantiate(projectile, transform.position, Quaternion.identity);
-                ProjectileController proj = projGameObject.GetComponent<ProjectileController>();
+            GameObject lol = Instantiate(projectile, transform.position, Quaternion.identity);
+            ProjectileController proj = lol.GetComponent<ProjectileController>();
 
-                if (proj != null)
-                {
-                    proj.target = playerTransform;
-                    proj.senderColl = null; // When Enemies have colliders,
+            if (proj != null)
+            {
+                proj.target = playerTransform;
+                proj.senderColl = null; // When Enemies have colliders,
                                         // TODO: Make a variable for Enemy's collider and put it here
-                }
-                nextFire = Time.time + fireRate;
             }
+            nextFire = Time.time + fireRate;
         }
     }
 
     void TargetStill()
     {
-        if (IsWithinCamera())
-        {
-            targetPosition = rb2D.position;
-        }
+        if (IsWithinCamera()) {  targetPosition = rb2D.position;  }
     }
 
     void TargetPlayer()
     {
-        if (IsWithinCamera())
-        {
-            targetPosition = player.position;
-        }
+        if (IsWithinCamera()) {  targetPosition = playerTransform.position;  }
     }
 
     void TargetLine(float distance, float angle)
