@@ -13,19 +13,19 @@ using UnityEngine;
 
 public class HorizontalSpriteStretch : MonoBehaviour
 {
-    float cameraHeight;
-    float cameraWidth;
-    float spriteWidth;
-    float scaleFactorX;
-    float newScaleFactorX;
+    private float cameraHeight;
+    private float cameraWidth;
+    private float spriteWidth;
+    private float spriteHeight;
+    private float scaleFactorX;
+    private float scaleFactorY;
+    private float newScaleFactorX;
+    private float newScaleFactorY;
     
     Vector2 currentSize;
     Vector2 newSize;
     Vector2 scale;
 
-    [SerializeField]
-    private float height = 4;
-    
     void Awake()
     {
         var spriteSize = gameObject.GetComponent<SpriteRenderer>().bounds.size;
@@ -35,19 +35,24 @@ public class HorizontalSpriteStretch : MonoBehaviour
         //
         cameraHeight = Camera.main.orthographicSize * 2;
         cameraWidth = cameraHeight * Camera.main.aspect;
+        Debug.Log(cameraWidth + ", " + cameraHeight);
         currentSize = new Vector2(cameraWidth, cameraHeight);
-
+    }
+}
+/*
         //
         // Next, size of the sprite is obtained
         //
         spriteWidth = spriteSize.x;
+        spriteHeight = spriteSize.y;
 
         //
         // Finally, the scaling factor is calculated, with the sprite renderer transformed to fill the screen
         //
         scaleFactorX = cameraWidth / spriteWidth;
+        scaleFactorY = cameraHeight / spriteHeight;
         scale = transform.localScale;
-        transform.localScale = new Vector2(transform.localScale.x * scaleFactorX, height);
+        transform.localScale = new Vector2(transform.localScale.x * scaleFactorX, transform.localScale.y * scaleFactorY);
     }
 
     // Update is called once per frame
@@ -59,15 +64,18 @@ public class HorizontalSpriteStretch : MonoBehaviour
 
         if (currentSize != newSize) {  // screen is a different size            
             newScaleFactorX = cameraWidth / spriteWidth;
+            newScaleFactorY = cameraHeight / spriteHeight;
             
             scale = transform.localScale;
-            transform.localScale = new Vector2(transform.localScale.x * (newScaleFactorX/scaleFactorX), height);
+            transform.localScale = new Vector2(transform.localScale.x * (newScaleFactorX/scaleFactorX), transform.localScale.y * (newScaleFactorY/scaleFactorY));
             
             //
             // Current values updated with new values
             //
             currentSize = newSize;
             scaleFactorX = newScaleFactorX;
+            scaleFactorY = newScaleFactorY;
         }
     }
 }
+*/
