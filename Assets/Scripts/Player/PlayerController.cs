@@ -21,24 +21,22 @@ public class PlayerController : MonoBehaviour
     private GameObject projectile;
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
-    private Transform playerPos;
     private ProjectileController proj;
     private Collider2D playerColl;
 
     public HashSet<Transform> enemyHash = new HashSet<Transform>();
+
+    public int GetMaxHealth() => maxHealth;
+    public int GetCurrentHealth() => currentHealth;
 
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
         targetPosition = rb2D.position;
         currentHealth = maxHealth;
-        playerPos = this.GetComponent<Transform>();
         playerColl = this.GetComponent<Collider2D>();
         nextFire = Time.time;
     }
-
-    public int GetMaxHealth() => maxHealth;
-    public int GetCurrentHealth() => currentHealth;
 
     private void Update()
     {
@@ -80,41 +78,6 @@ public class PlayerController : MonoBehaviour
         // won't continually try to reach an unreachable targetPosition when blocked by a collider.
     }
 
-    private void RangedAttack()
-    {
-        if (Time.time > nextFire)
-        {
-            Instantiate(projectile, transform.position, Quaternion.identity);
-            proj = projectile.GetComponent<ProjectileController>();
-
-            if (proj != null)
-            {
-                proj.target = FindTargetEnemy();
-                proj.senderColl = playerColl;
-            }
-            nextFire = Time.time + fireRate;
-        }
-    }
-
-    private Transform FindTargetEnemy()
-    {
-        Transform closeEnem = null;
-        float distToCloseEnem = Mathf.Infinity,
-              distToEnem = 0;
-
-        foreach (Transform enem in enemyHash)
-        {
-            distToEnem = (enem.position - playerPos.position).sqrMagnitude;
-
-            if (distToEnem < distToCloseEnem)
-            {
-                distToCloseEnem = distToEnem;
-                closeEnem = enem;
-            }
-        }
-        return closeEnem;
-    }
-
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -129,5 +92,37 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(currentHealth);
 
         if (currentHealth > maxHealth) { currentHealth = maxHealth; }
+    }
+
+    private void RangedAttack()
+    {
+        if (Time.time > nextFire)
+        {
+            Instantiate(projectile, transform.position, Quaternion.identity);
+            proj = projectile.GetComponent<ProjectileController>();
+
+            if (proj != null && enemyHash.Count > 0) { proj.SetUpProjectile(FindTargetEnemy(), playerColl); }
+
+            nextFire = Time.time + fireRate;
+        }
+    }
+
+    private Transform FindTargetEnemy()
+    {
+        Transform closeEnem = null;
+        float distToClosestEnem = Mathf.Infinity,
+              distToEnem = 0;
+
+        foreach (Transform enem in enemyHash)
+        {
+            distToEnem = (enem.position - transform.position).sqrMagnitude;
+
+            if (distToEnem < distToClosestEnem)
+            {
+                distToClosestEnem = distToEnem;
+                closeEnem = enem;
+            }
+        }
+        return closeEnem;
     }
 }

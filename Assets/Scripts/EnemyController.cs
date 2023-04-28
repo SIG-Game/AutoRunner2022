@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float fireRate = 1f;
     private float nextFire;
-    private bool inHash = false;
 
     [SerializeField]
     private GameObject projectile;
@@ -19,53 +18,35 @@ public class EnemyController : MonoBehaviour
     private PlayerController player;
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
-    private Transform playerTransform,
-                      thisTransform;
-
-    // Start is called before the first frame update
-    void Start() {  }
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         currentHealth = maxHealth;
         nextFire = Time.time;
-        playerTransform = player.GetComponent<Transform>();
-        thisTransform = this.GetComponent<Transform>();
         rb2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         targetPosition = rb2D.position;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         RangedAttack();
-
-        UpdateHash();
     }
 
-    private void UpdateHash()
-    {
-        if (player != null && IsWithinCamera())
-        {
-            player.enemyHash.Add(thisTransform);
-            inHash = true;
-        }
-        else if (player != null && inHash)
-        {
-            player.enemyHash.Remove(thisTransform);
-            inHash = false;
-        }
-    }
+    private void OnBecameVisible() { player.enemyHash.Add(transform); }
+    
+    private void OnBecameInvisible() { player.enemyHash.Remove(transform); }
 
-    // This function is used to have enemies both take and recieve damage.
-    // Call change health with negative values to take damage, and positive values to heal damage.
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         TargetPlayer();
         rb2D.MovePosition(Vector2.MoveTowards(rb2D.position, targetPosition, movementSpeed));
     }
 
-    //This function is used to have enemies both take and recieve damage. call change health with negative values to take damage, and positive values to heal damage.
+    // This function is used to have enemies both take and recieve damage.
+    // Call change health with negative values to take damage, and positive values to heal damage.
     public void ChangeHealth(int healthLost)
     {
         currentHealth += healthLost;
@@ -73,19 +54,18 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0) { Die(); }
     }
 
-    void Die()
+    public void Die()
     {
         if (player != null)
         {
-            player.enemyHash.Remove(thisTransform);
-            inHash = false;
+            player.enemyHash.Remove(transform);
         }
         Object.Destroy(this.gameObject);
     }
 
-    bool IsWithinCamera() => (GetComponent<Renderer>().isVisible) ? true : false;
+    private bool IsWithinCamera() { if (spriteRenderer.isVisible) { return true; } else { return false; } }
 
-    void MeleeAttack()
+    private void MeleeAttack()
     {
         if (IsWithinCamera())
         {
@@ -93,34 +73,32 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void RangedAttack()
+    private void RangedAttack()
     {
-        if (IsWithinCamera() && Time.time > nextFire && playerTransform != null)
+        if (IsWithinCamera() && Time.time > nextFire && player.transform != null)
         {
-            GameObject lol = Instantiate(projectile, transform.position, Quaternion.identity);
-            ProjectileController proj = lol.GetComponent<ProjectileController>();
+            GameObject project = Instantiate(projectile, transform.position, Quaternion.identity);
+            ProjectileController proj = project.GetComponent<ProjectileController>();
 
             if (proj != null)
             {
-                proj.target = playerTransform;
-                proj.senderColl = null; // When Enemies have colliders,
-                                        // TODO: Make a variable for Enemy's collider and put it here
+                proj.SetUpProjectile(player.transform, Collider2D);
             }
             nextFire = Time.time + fireRate;
         }
     }
 
-    void TargetStill()
+    private void TargetStill()
     {
         if (IsWithinCamera()) {  targetPosition = rb2D.position;  }
     }
 
-    void TargetPlayer()
+    private void TargetPlayer()
     {
-        if (IsWithinCamera()) {  targetPosition = playerTransform.position;  }
+        if (IsWithinCamera()) {  targetPosition = player.transform.position;  }
     }
 
-    void TargetLine(float distance, float angle)
+    private void TargetLine(float distance, float angle)
     {
         if (IsWithinCamera())
         {

@@ -10,17 +10,21 @@ public class ProjectileController : MonoBehaviour
     private bool wantDeviation = true;
     [SerializeField]
     private float projDeviation = 1f;
-    public TargetName tName; // "Player" to damage players, "Enemy" to damage enemies
 
     public enum TargetName { Player, Enemy };
+    public TargetName tName; // "Player" to damage players, "Enemy" to damage enemies
 
-    // These variables need to be set on creation of the instance
-    [HideInInspector]
-    public Transform target; // Transform of gameObject to target
-    [HideInInspector]
-    public Collider2D senderColl; // Collider of gameObject that is firing the proj
+    private Transform target;
+    private Collider2D senderColl;
 
-    void Start()
+    // Sets up the variables needed to be set on creation of the instance
+    public void SetUpProjectile(Transform t, Collider2D sC)
+    {
+        target = t; // Transform of gameObject to target
+        senderColl = sC; // Collider of gameObject that is firing the proj
+    }
+
+    private void Start()
     {
         Rigidbody2D projRb = GetComponent<Rigidbody2D>();
 
@@ -38,12 +42,12 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    void OnBecameInvisible()
+    private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D coll2D)
+    private void OnTriggerEnter2D(Collider2D coll2D)
     {
         if (tName == TargetName.Player)
         {
