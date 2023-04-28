@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
     private SpriteRenderer spriteRenderer;
+    private Collider2D enemyColl;
+    private ProjectileController proj;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class EnemyController : MonoBehaviour
         nextFire = Time.time;
         rb2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyColl = GetComponent<Collider2D>();
         targetPosition = rb2D.position;
     }
 
@@ -35,9 +38,9 @@ public class EnemyController : MonoBehaviour
         RangedAttack();
     }
 
-    private void OnBecameVisible() { player.enemyHash.Add(transform); }
-    
-    private void OnBecameInvisible() { player.enemyHash.Remove(transform); }
+    private void OnBecameVisible() {  player.enemyHash.Add(transform);  }
+
+    private void OnBecameInvisible() {  player.enemyHash.Remove(transform);  }
 
     private void FixedUpdate()
     {
@@ -51,47 +54,40 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth += healthLost;
 
-        if (currentHealth <= 0) { Die(); }
+        if (currentHealth <= 0) {  Die();  }
     }
 
     public void Die()
     {
-        if (player != null)
-        {
-            player.enemyHash.Remove(transform);
-        }
+        if (player != null) {  player.enemyHash.Remove(transform); }
+        
         Object.Destroy(this.gameObject);
     }
 
-    private bool IsWithinCamera() { if (spriteRenderer.isVisible) { return true; } else { return false; } }
+    private bool IsWithinCamera()
+    {
+        if (spriteRenderer.isVisible) {  return true; } else {  return false;  }
+    }
 
     private void MeleeAttack()
     {
-        if (IsWithinCamera())
-        {
-
-        }
+        if (IsWithinCamera()) { }
     }
 
     private void RangedAttack()
     {
         if (IsWithinCamera() && Time.time > nextFire && player.transform != null)
         {
-            GameObject project = Instantiate(projectile, transform.position, Quaternion.identity);
-            ProjectileController proj = project.GetComponent<ProjectileController>();
+            proj = Instantiate(projectile, transform.position, Quaternion.identity)
+                .GetComponent<ProjectileController>();
 
-            if (proj != null)
-            {
-                proj.SetUpProjectile(player.transform, Collider2D);
-            }
+            if (proj != null) {  proj.SetUpProjectile(player.transform, enemyColl);  }
+
             nextFire = Time.time + fireRate;
         }
     }
 
-    private void TargetStill()
-    {
-        if (IsWithinCamera()) {  targetPosition = rb2D.position;  }
-    }
+    private void TargetStill() {  if (IsWithinCamera()) {  targetPosition = rb2D.position;  }  }
 
     private void TargetPlayer()
     {
@@ -102,7 +98,8 @@ public class EnemyController : MonoBehaviour
     {
         if (IsWithinCamera())
         {
-            targetPosition = rb2D.position + (Vector2)(Quaternion.Euler(0f, 0f, angle) * Vector3.right) * distance;
+            targetPosition = rb2D.position
+                + (Vector2)(Quaternion.Euler(0f, 0f, angle) * Vector3.right) * distance;
         }
     }
 }

@@ -30,15 +30,19 @@ public class ProjectileController : MonoBehaviour
 
         if (target != null)
         {
-            Vector2 projVelocity = (target.position - transform.position).normalized * projMoveSpeed;
+            Vector2 projVelocity =
+                (target.position - transform.position).normalized * projMoveSpeed;
 
             if (wantDeviation)
             {
-                projVelocity.x = Random.Range(projVelocity.x - projDeviation, projVelocity.x + projDeviation);
-                projVelocity.y = Random.Range(projVelocity.y - projDeviation, projVelocity.y + projDeviation);
+                projVelocity.x = Random.Range(projVelocity.x - projDeviation,
+                                            projVelocity.x + projDeviation);
+                projVelocity.y = Random.Range(projVelocity.y - projDeviation,
+                                            projVelocity.y + projDeviation);
             }
             projRb.velocity = projVelocity;
-            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan(projVelocity.y / projVelocity.x));
+            transform.rotation = Quaternion.Euler(0f, 0f,
+                Mathf.Rad2Deg * Mathf.Atan(projVelocity.y / projVelocity.x));
         }
     }
 
@@ -53,23 +57,15 @@ public class ProjectileController : MonoBehaviour
         {
             PlayerController player = coll2D.GetComponent<PlayerController>();
 
-            if (player != null)
-            {
-                player.TakeDamage(projDamage);
-            }
+            if (player != null) {  player.TakeDamage(projDamage);  }
         }
         else if (tName == TargetName.Enemy)
         {
             EnemyController enemy = coll2D.GetComponent<EnemyController>();
 
-            if (enemy != null)
-            {
-                enemy.ChangeHealth(-1 * projDamage);
-            }
+            if (enemy != null) {  enemy.ChangeHealth(-1 * projDamage);  }
         }
-        if (coll2D != senderColl && !coll2D.isTrigger)
-        {
-            Destroy(gameObject);
-        }
+
+        if (coll2D != senderColl && !coll2D.isTrigger) {  Destroy(gameObject);  }
     }
 }

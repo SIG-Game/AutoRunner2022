@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public HashSet<Transform> enemyHash = new HashSet<Transform>();
 
     public int GetMaxHealth() => maxHealth;
+
     public int GetCurrentHealth() => currentHealth;
 
     private void Awake()
@@ -40,13 +41,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (PauseController.Instance.GamePaused) { return; }
+        if (PauseController.Instance.GamePaused) {  return;  }
 
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+            if (touch.phase == TouchPhase.Began
+                && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
             {
                 targetPosition = Camera.main.ScreenToWorldPoint(touch.position);
             }
@@ -56,11 +58,11 @@ public class PlayerController : MonoBehaviour
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        if (rb2D.position == targetPosition && enemyHash.Count > 0) { RangedAttack(); }
+        if (rb2D.position == targetPosition && enemyHash.Count > 0) {  RangedAttack();  }
 
-        if (Input.GetKeyDown(KeyCode.H)) { Heal(20); }
+        if (Input.GetKeyDown(KeyCode.H)) {  Heal(20);  }
 
-        if (Input.GetKeyDown(KeyCode.Space)) { TakeDamage(20); }
+        if (Input.GetKeyDown(KeyCode.Space)) {  TakeDamage(20); }
 
         if (GetCurrentHealth() <= 0)
         {
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
 
-        if (currentHealth < 0) { currentHealth = 0; }
+        if (currentHealth < 0) {  currentHealth = 0;  }
     }
 
     public void Heal(int heal)
@@ -91,17 +93,20 @@ public class PlayerController : MonoBehaviour
         currentHealth += heal;
         healthBar.SetHealth(currentHealth);
 
-        if (currentHealth > maxHealth) { currentHealth = maxHealth; }
+        if (currentHealth > maxHealth) {  currentHealth = maxHealth;  }
     }
 
     private void RangedAttack()
     {
         if (Time.time > nextFire)
         {
-            Instantiate(projectile, transform.position, Quaternion.identity);
-            proj = projectile.GetComponent<ProjectileController>();
+            proj = Instantiate(projectile, transform.position, Quaternion.identity)
+                .GetComponent<ProjectileController>();
 
-            if (proj != null && enemyHash.Count > 0) { proj.SetUpProjectile(FindTargetEnemy(), playerColl); }
+            if (proj != null && enemyHash.Count > 0)
+            {
+                proj.SetUpProjectile(FindTargetEnemy(), playerColl);
+            }
 
             nextFire = Time.time + fireRate;
         }
@@ -111,7 +116,7 @@ public class PlayerController : MonoBehaviour
     {
         Transform closeEnem = null;
         float distToClosestEnem = Mathf.Infinity,
-              distToEnem = 0;
+            distToEnem = 0;
 
         foreach (Transform enem in enemyHash)
         {
