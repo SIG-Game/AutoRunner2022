@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        if (rb2D.position == targetPosition && enemyHash.Count > 0) {  RangedAttack();  }
+        if (rb2D.position == targetPosition && enemyHash.Count > 0) {  PeriodicRangedAttack();  }
 
         if (Input.GetKeyDown(KeyCode.H)) {  Heal(20);  }
 
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth > maxHealth) {  currentHealth = maxHealth;  }
     }
 
-    private void RangedAttack()
+    private void PeriodicRangedAttack()
     {
         if (Time.time > nextFire)
         {
@@ -105,29 +105,28 @@ public class PlayerController : MonoBehaviour
 
             if (proj != null && enemyHash.Count > 0)
             {
-                proj.SetUpProjectile(FindTargetEnemy(), playerColl);
+                proj.SetUpProjectile(GetClosestEnemy(), playerColl);
             }
 
             nextFire = Time.time + fireRate;
         }
     }
 
-    private Transform FindTargetEnemy()
+    private Transform GetClosestEnemy()
     {
-        Transform closeEnem = null;
-        float distToClosestEnem = Mathf.Infinity,
-            distToEnem = 0;
+        Transform closestEnem = null;
+        float distToClosestEnem = Mathf.Infinity;
 
         foreach (Transform enem in enemyHash)
         {
-            distToEnem = (enem.position - transform.position).sqrMagnitude;
+            float distToEnem = (enem.position - transform.position).sqrMagnitude;
 
             if (distToEnem < distToClosestEnem)
             {
                 distToClosestEnem = distToEnem;
-                closeEnem = enem;
+                closestEnem = enem;
             }
         }
-        return closeEnem;
+        return closestEnem;
     }
 }

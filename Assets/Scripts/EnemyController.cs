@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        RangedAttack();
+        PeriodicRangedAttack();
     }
 
     private void OnBecameVisible() {  player.enemyHash.Add(transform);  }
@@ -64,19 +64,16 @@ public class EnemyController : MonoBehaviour
         Object.Destroy(this.gameObject);
     }
 
-    private bool IsWithinCamera()
-    {
-        if (spriteRenderer.isVisible) {  return true; } else {  return false;  }
-    }
+    private bool IsWithinCamera() => spriteRenderer.isVisible;
 
     private void MeleeAttack()
     {
         if (IsWithinCamera()) { }
     }
 
-    private void RangedAttack()
+    private void PeriodicRangedAttack()
     {
-        if (IsWithinCamera() && Time.time > nextFire && player.transform != null)
+        if (IsWithinCamera() && player.transform != null && Time.time > nextFire)
         {
             proj = Instantiate(projectile, transform.position, Quaternion.identity)
                 .GetComponent<ProjectileController>();

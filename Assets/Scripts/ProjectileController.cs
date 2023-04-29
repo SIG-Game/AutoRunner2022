@@ -3,7 +3,7 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     [SerializeField]
-    private int projDamage = 100;
+    private int projDamage = 50;
     [SerializeField]
     private float projMoveSpeed = 7f;
     [SerializeField]
@@ -18,10 +18,10 @@ public class ProjectileController : MonoBehaviour
     private Collider2D senderColl;
 
     // Sets up the variables needed to be set on creation of the instance
-    public void SetUpProjectile(Transform t, Collider2D sC)
+    public void SetUpProjectile(Transform target, Collider2D senderColl)
     {
-        target = t; // Transform of gameObject to target
-        senderColl = sC; // Collider of gameObject that is firing the proj
+        this.target = target; // Transform of gameObject to target
+        this.senderColl = senderColl; // Collider of gameObject that is firing the proj
     }
 
     private void Start()
