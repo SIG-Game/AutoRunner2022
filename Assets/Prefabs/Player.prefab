@@ -149,4 +149,6 @@ MonoBehaviour:
   movementSpeed: 0.1
   maxHealth: 100
   currentHealth: 0
+  fireRate: 1
   healthBar: {fileID: 0}
+  projectile: {fileID: 7791087401186349723, guid: cfb57dc55df274644b0b640ed1d03996, type: 3}
