@@ -13,10 +13,10 @@ public class LevelEndTriggerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {   
+    {
         if (collision.CompareTag("Player"))
         {
-            if ( (SceneManager.GetActiveScene().buildIndex - 1) == lastLevel)
+            if ((SceneManager.GetActiveScene().buildIndex - 1) == lastLevel)
             {
                 Debug.Log("YOU WIN!");
                 SceneManager.LoadScene("StartMenu");
