@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: LevelSelect
 --- !u!1 &126234971
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: LevelSelect
 --- !u!1 &343502041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: LevelSelect
 --- !u!1 &670289577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,7 +2193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: LevelSelect
 --- !u!1 &1298443992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,7 +2341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: LevelSelect
 --- !u!1 &1352569757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,7 +2554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: LevelSelect
 --- !u!1 &1533941490
 GameObject:
   m_ObjectHideFlags: 0
@@ -3024,6 +3024,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750245648}
   m_CullTransparentMesh: 1
+--- !u!1 &1769188492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769188494}
+  - component: {fileID: 1769188493}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1769188493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769188492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ba18438f91d084382637c84161c062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvlButtons:
+  - {fileID: 2062344824}
+  - {fileID: 9635302}
+  - {fileID: 1106746379}
+  - {fileID: 2062078700}
+  - {fileID: 1396982924}
+  - {fileID: 2031969960}
+  - {fileID: 1298443994}
+  - {fileID: 655681089}
+  - {fileID: 334100837}
+  - {fileID: 89396348}
+--- !u!4 &1769188494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769188492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836002440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3171,7 +3226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: StartMenu
 --- !u!1 &1954330695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,7 +3509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: LevelSelect
 --- !u!1 &2033734304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,7 +3859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: LevelSelect
 --- !u!1 &2062344822
 GameObject:
   m_ObjectHideFlags: 0
@@ -3952,7 +4007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2e5d02145648f458992c5e5376836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSceneToLoad: SampleScene
+  nameOfSceneToLoad: Level1
 --- !u!1 &2135450745
 GameObject:
   m_ObjectHideFlags: 0
