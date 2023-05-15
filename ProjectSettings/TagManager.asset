@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Background
-  - LeftBush
-  - RightBush
+  - LeftBorder
+  - RightBorder
   layers:
   - Default
   - TransparentFX
