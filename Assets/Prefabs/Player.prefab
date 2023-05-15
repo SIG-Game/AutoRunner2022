@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9132629468561657829}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.1
+  maxHealth: 100
+  currentHealth: 0
+  fireRate: 1
+  healthBar: {fileID: 0}
+  projectile: {fileID: 7791087401186349723, guid: cfb57dc55df274644b0b640ed1d03996, type: 3}
