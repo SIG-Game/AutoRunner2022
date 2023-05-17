@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f185815d78797458a1d70ba5ed6e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  projDamage: 100
-  projLifeSpan: 3
+  projDamage: 50
+  projMoveSpeed: 7
+  wantDeviation: 1
   projDeviation: 1
+  tName: 0
