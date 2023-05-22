@@ -904,6 +904,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7163193356134351331, guid: a39625386e74eb343a3957368164edd2, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163193357117566380, guid: a39625386e74eb343a3957368164edd2, type: 3}
+      propertyPath: side
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7163193357137035464, guid: a39625386e74eb343a3957368164edd2, type: 3}
       propertyPath: m_Name
       value: BackgroundPack
