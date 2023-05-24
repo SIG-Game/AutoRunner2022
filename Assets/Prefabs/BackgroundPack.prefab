@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35971208ffe66ec4c8ae05d503b7f4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  border: {fileID: 7163193357132298336}
+  borderSprite: {fileID: 7163193357132298336}
   side: 0
 --- !u!1 &7163193356134351331
 GameObject:
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35971208ffe66ec4c8ae05d503b7f4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  border: {fileID: 7163193356813174211}
+  borderSprite: {fileID: 7163193356813174211}
   side: 1
 --- !u!1 &7163193357132298337
 GameObject:
