@@ -14,7 +14,7 @@ public class LoadSceneButton : MonoBehaviour
         }
         catch
         {
-            Debug.Log("Scene has not been implemented yet.");
+            Debug.Log($"Scene {nameOfSceneToLoad} not found.");
         }
     }
 }

@@ -6,7 +6,6 @@ public class LevelEndTriggerController : MonoBehaviour
     [SerializeField]
     private int indexForNextScene;
 
-    [SerializeField]
     private const int lastLevel = 2;
 
     private void Start()
@@ -27,9 +26,9 @@ public class LevelEndTriggerController : MonoBehaviour
             {
                 SceneManager.LoadScene(indexForNextScene);
 
-                if (indexForNextScene > PlayerPrefs.GetInt("levelAt"))
+                if (indexForNextScene > PlayerPrefs.GetInt("highestLvlUnlock"))
                 {
-                    PlayerPrefs.SetInt("levelAt", indexForNextScene);
+                    PlayerPrefs.SetInt("highestLvlUnlock", indexForNextScene);
                 }
             }
         }

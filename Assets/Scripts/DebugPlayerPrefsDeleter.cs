@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class DebugPlayerPrefsDeleter : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
+            Debug.Log("PlayerPrefs deleted");
             PlayerPrefs.DeleteAll();
         }
     }

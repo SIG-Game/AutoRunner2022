@@ -247,11 +247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 514479185865205314, guid: 8fd34ff5644dba2488fc122c24d515f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -807.4
+      value: -809.98
       objectReference: {fileID: 0}
     - target: {fileID: 514479185865205314, guid: 8fd34ff5644dba2488fc122c24d515f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 122.24
+      value: 122.14
       objectReference: {fileID: 0}
     - target: {fileID: 514479185865205314, guid: 8fd34ff5644dba2488fc122c24d515f3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -601,11 +601,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215622920849717734, guid: c9cb149ef1a6c1d49b10c17aad617566, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -809.84
+      value: -807.47
       objectReference: {fileID: 0}
     - target: {fileID: 5215622920849717734, guid: c9cb149ef1a6c1d49b10c17aad617566, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 118.52
+      value: 118.56
       objectReference: {fileID: 0}
     - target: {fileID: 5215622920849717734, guid: c9cb149ef1a6c1d49b10c17aad617566, type: 3}
       propertyPath: m_LocalPosition.z
@@ -835,6 +835,10 @@ PrefabInstance:
     - target: {fileID: 2617945921448679910, guid: 309730eacf554f04e991349c77ea6ee5, type: 3}
       propertyPath: m_Name
       value: Level End Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617945921448679911, guid: 309730eacf554f04e991349c77ea6ee5, type: 3}
+      propertyPath: lastLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2617945921448679913, guid: 309730eacf554f04e991349c77ea6ee5, type: 3}
       propertyPath: m_Color.a
