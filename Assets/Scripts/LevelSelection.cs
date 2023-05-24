@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSelection : MonoBehaviour
 {
-    public Button[] lvlButtons;
+    [SerializeField]
+    private Button[] lvlButtons;
 
-    // Start is called before the first frame update
     void Start()
     {
         int levelAt = PlayerPrefs.GetInt("levelAt", 2);

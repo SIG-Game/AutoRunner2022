@@ -3,13 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelEndTriggerController : MonoBehaviour
 {
-    public int nextSceneLoad,
-               lastLevel;
+    [SerializeField]
+    private int indexForNextScene;
 
-    void Start()
+    [SerializeField]
+    private const int lastLevel = 2;
+
+    private void Start()
     {
-        nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
-        lastLevel = 2;
+        indexForNextScene = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,13 +25,11 @@ public class LevelEndTriggerController : MonoBehaviour
             }
             else
             {
-                // Move to next level
-                SceneManager.LoadScene(nextSceneLoad);
+                SceneManager.LoadScene(indexForNextScene);
 
-                // Setting Int for Index
-                if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
+                if (indexForNextScene > PlayerPrefs.GetInt("levelAt"))
                 {
-                    PlayerPrefs.SetInt("levelAt", nextSceneLoad);
+                    PlayerPrefs.SetInt("levelAt", indexForNextScene);
                 }
             }
         }
