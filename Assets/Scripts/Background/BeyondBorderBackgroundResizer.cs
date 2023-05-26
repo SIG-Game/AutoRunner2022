@@ -1,7 +1,4 @@
-// Thanks to Loek van den Ouweland for scaling code explanation;
-// their article is where I came across a script with similar code for obtaining camera values and scaling a background.
-// van den Ouweland, L. (2019, October 9). STRETCH A UNITY SPRITE TO FILL THE SCREEN IN A 2D GAME (GAMEOBJECT, NOT UI-CANVAS). 
-// Loek van den Ouweland Software Engineering. Retrieved March 20, 2023, from 
+// Thanks to Loek van den Ouweland for basic scaling code explanation;
 // https://www.loekvandenouweland.com/content/stretch-unity-sprite-to-fill-the-screen.html.
 // This code increases/decreases the size of the GameObject sprite so that it can cover the empty left/right background space that exists 
 // when the player is using a large/horizontal screen to play the game. The sizing is dependent on the distance between the assigned border's 
@@ -12,12 +9,12 @@ using UnityEngine;
 
 public class BeyondBorderBackgroundResizer : MonoBehaviour
 {
+    private enum Side {Left, Right}; // Right if filling the space for the right side of the screen, Left otherwise
+
     private float borderEdge;
     private Vector2 currentCameraSize;
-    private SpriteRenderer beyondBorderBgSprite;
-
+    private SpriteRenderer beyondBorderBgSprite; 
     [SerializeField] private SpriteRenderer borderSprite;
-    [SerializeField] private enum Side {Left, Right}; // Right if filling the space for the right side of the screen, Left otherwise
     [SerializeField] private Side side;
 
 
@@ -70,9 +67,8 @@ public class BeyondBorderBackgroundResizer : MonoBehaviour
 
     private void Update()
     {
-        Vector2 newCameraSize;
         float cameraHeight = Camera.main.orthographicSize * 2;
-        newCameraSize = new Vector2(cameraHeight * Camera.main.aspect, cameraHeight);
+        Vector2 newCameraSize = new Vector2(cameraHeight * Camera.main.aspect, cameraHeight);
         
         if (currentCameraSize != newCameraSize) 
         {            
