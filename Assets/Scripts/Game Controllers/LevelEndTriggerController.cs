@@ -17,7 +17,7 @@ public class LevelEndTriggerController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if ((SceneManager.GetActiveScene().buildIndex - 1) == lastLevel)
+            if ((SceneManager.GetActiveScene().buildIndex) == lastLevel)
             {
                 Debug.Log("YOU WIN!");
                 SceneManager.LoadScene("StartMenu");
