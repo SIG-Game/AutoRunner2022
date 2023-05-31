@@ -247,19 +247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 514479185865205314, guid: 8fd34ff5644dba2488fc122c24d515f3, type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD:Assets/Scenes/Levels/Level1.unity
-      value: -807.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 514479185865205314, guid: 8fd34ff5644dba2488fc122c24d515f3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 122.24
-=======
       value: -805.79
       objectReference: {fileID: 0}
     - target: {fileID: 514479185865205314, guid: 8fd34ff5644dba2488fc122c24d515f3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 120.01
->>>>>>> parent of 5c84191 (Merge pull request #40 from SIG-Game/31_FixBackgroundScaling):Assets/Scenes/SampleScene.unity
       objectReference: {fileID: 0}
     - target: {fileID: 514479185865205314, guid: 8fd34ff5644dba2488fc122c24d515f3, type: 3}
       propertyPath: m_LocalPosition.z
