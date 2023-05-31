@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8797071760707973009}
   - component: {fileID: -265546361453852301}
   - component: {fileID: -7253171591806650965}
+  - component: {fileID: 2756521843910132133}
   m_Layer: 0
   m_Name: GraveObstacle
   m_TagString: Untagged
@@ -74,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0e28dc90a505d9849a3d35e54008f007, type: 3}
+  m_Sprite: {fileID: 1538696851, guid: 5d5168bbec8e0a047aa57e2390d3a3fb, type: 3}
   m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.75, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,12 +103,28 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.71875, y: 1}
+    newSize: {x: 0.75, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.625, y: 0.85}
+  m_Size: {x: 0.59375, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &2756521843910132133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986219655540316566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7f98251c244ea4ba834993cf19257a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 1538696851, guid: 5d5168bbec8e0a047aa57e2390d3a3fb, type: 3}
+  - {fileID: 1618852635, guid: 5d5168bbec8e0a047aa57e2390d3a3fb, type: 3}
+  - {fileID: -540969746, guid: 5d5168bbec8e0a047aa57e2390d3a3fb, type: 3}

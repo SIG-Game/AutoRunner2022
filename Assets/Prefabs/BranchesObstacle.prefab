@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8797071760707973009}
   - component: {fileID: -265546361453852301}
   - component: {fileID: -7253171591806650965}
+  - component: {fileID: 487681674250983567}
   m_Layer: 0
   m_Name: BranchesObstacle
   m_TagString: Untagged
@@ -74,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5c4a50def6d7004e8901223f9bde80d, type: 3}
+  m_Sprite: {fileID: -1958601587, guid: 065a771c77a98b047ba46d8b1141614f, type: 3}
   m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,16 +99,32 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.75}
+    newSize: {x: 1, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.75}
+  m_Size: {x: 0.9375, y: 0.6875}
   m_EdgeRadius: 0
+--- !u!114 &487681674250983567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986219655540316566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7f98251c244ea4ba834993cf19257a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -1958601587, guid: 065a771c77a98b047ba46d8b1141614f, type: 3}
+  - {fileID: -1472973148, guid: 065a771c77a98b047ba46d8b1141614f, type: 3}
+  - {fileID: -1290803717, guid: 065a771c77a98b047ba46d8b1141614f, type: 3}
