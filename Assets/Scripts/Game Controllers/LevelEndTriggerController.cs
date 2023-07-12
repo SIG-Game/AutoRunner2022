@@ -17,6 +17,8 @@ public class LevelEndTriggerController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            ScoreManager.Instance.LevelEnd(collision.transform.position.y);
+
             if ((SceneManager.GetActiveScene().buildIndex) == lastLevel)
             {
                 Debug.Log("YOU WIN!");
