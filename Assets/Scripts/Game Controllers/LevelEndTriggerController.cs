@@ -6,7 +6,7 @@ public class LevelEndTriggerController : MonoBehaviour
     [SerializeField]
     private int indexForNextScene;
 
-    private const int lastLevel = 2;
+    private const int lastLevel = 3;
 
     private void Start()
     {
