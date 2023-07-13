@@ -25,6 +25,7 @@ public class ScoreManager : MonoBehaviour
 
     public void SetStartY(float y) { startY = y; }
     
+    // Pass a positive for increase, negative for decrease
     public void ChangeScore(float amount) { Score += amount; }
 
     public void UpdateScoreDisplay()
