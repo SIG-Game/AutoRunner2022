@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -10,16 +11,26 @@ public class ScoreManager : MonoBehaviour
         private set { score = value; }
     }
 
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
+
     private const float moveMulti4Pts = 10.0f, // The value to multiply the distance traveled by
                         enemyFelledPts = 100.0f; // The points killing an enemy is worth
 
     private float score,
+                  displayScore,
                   pastScore,
-                  startY;
+                  startY,
+                  transitionSpeed = 100.0f;
 
     public void SetStartY(float y) { startY = y; }
     
     public void IncreaseScore(float amount) { Score += amount; }
+
+    public void UpdateScoreDisplay()
+    {
+        scoreText.text = string.Format("Score: {0:00000}", displayScore);
+    }
 
     public void EnemyFelled()
     {
@@ -52,5 +63,11 @@ public class ScoreManager : MonoBehaviour
     {
         Instance = this;
         pastScore = PlayerPrefs.GetFloat("lvl" + SceneManager.GetActiveScene().buildIndex + "HighScore");
+    }
+
+    private void Update()
+    {
+        displayScore = Mathf.MoveTowards(displayScore, score, transitionSpeed * Time.deltaTime);
+        UpdateScoreDisplay();
     }
 }
