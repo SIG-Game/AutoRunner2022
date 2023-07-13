@@ -10,7 +10,14 @@ public class LevelEndTriggerController : MonoBehaviour
 
     private void Start()
     {
-        indexForNextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            indexForNextScene = lastLevel + 1;
+        }
+        else
+        {
+            indexForNextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

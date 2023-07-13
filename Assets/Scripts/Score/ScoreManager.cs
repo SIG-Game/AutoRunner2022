@@ -25,7 +25,7 @@ public class ScoreManager : MonoBehaviour
 
     public void SetStartY(float y) { startY = y; }
     
-    public void IncreaseScore(float amount) { Score += amount; }
+    public void ChangeScore(float amount) { Score += amount; }
 
     public void UpdateScoreDisplay()
     {
@@ -34,12 +34,12 @@ public class ScoreManager : MonoBehaviour
 
     public void EnemyFelled()
     {
-        IncreaseScore(enemyFelledPts);
+        ChangeScore(enemyFelledPts);
     }
 
     public void BossFelled(float pts)
     {
-        IncreaseScore(pts);
+        ChangeScore(pts);
     }
 
     public void AbruptLevelEnd()
@@ -50,10 +50,7 @@ public class ScoreManager : MonoBehaviour
 
     public void LevelEnd(float curY)
     {
-        if (curY > startY)
-        {
-            IncreaseScore(moveMulti4Pts * (curY - startY));
-        }
+        if (curY > startY) { ChangeScore(moveMulti4Pts * (curY - startY)); }
 
         Score = (pastScore > Score) ? pastScore : Score;
         PlayerPrefs.SetFloat("lvl" + SceneManager.GetActiveScene().buildIndex + "HighScore", Score);
