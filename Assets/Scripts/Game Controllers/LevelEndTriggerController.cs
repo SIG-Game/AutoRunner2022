@@ -6,13 +6,11 @@ public class LevelEndTriggerController : MonoBehaviour
     [SerializeField]
     private int indexForNextScene;
 
-    private const int lastLevel = 2;
-
     private void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            indexForNextScene = lastLevel + 1;
+        { // This logic is temporary for the current non-infinite infinite level
+            indexForNextScene = Constants.lastLevel + 1;
         }
         else
         {
@@ -24,9 +22,9 @@ public class LevelEndTriggerController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            ScoreManager.Instance.LevelEnd(collision.transform.position.y);
+            ScoreManager.Instance.LevelEnd();
 
-            if ((SceneManager.GetActiveScene().buildIndex) == lastLevel)
+            if ((SceneManager.GetActiveScene().buildIndex) == Constants.lastLevel)
             {
                 Debug.Log("YOU WIN!");
                 SceneManager.LoadScene("StartMenu");

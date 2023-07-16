@@ -218,10 +218,10 @@ RectTransform:
   m_Father: {fileID: 1814142015}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 224, y: 341}
-  m_SizeDelta: {x: 129.5494, y: 27.4559}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -74.600006, y: -25.399994}
+  m_SizeDelta: {x: 129.54938, y: 27.455902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390241004
 MonoBehaviour:
@@ -531,6 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 390241004}
+  playerTransform: {fileID: 0}
 --- !u!224 &1151311345 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6657842818250678628, guid: e9c9642364165c343a244760994c6d20, type: 3}
@@ -1128,7 +1129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5010596299387327789, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: AbruptLevelEnd
+      value: LevelEnd
       objectReference: {fileID: 0}
     - target: {fileID: 5010596299387327789, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

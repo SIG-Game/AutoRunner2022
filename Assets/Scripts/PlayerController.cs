@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        ScoreManager.Instance.SetStartY(transform.position.y);
         rb2D = GetComponent<Rigidbody2D>();
         targetPosition = rb2D.position;
         currentHealth = maxHealth;

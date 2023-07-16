@@ -7,12 +7,11 @@ public class OverallScoreManager : MonoBehaviour
     private TextMeshProUGUI highScore;
 
     private float overallScore;
-    private int lastLevel = 2;
 
     private void Awake()
     {
-        for (int i = 0; i <= lastLevel; i++)
-        {
+        for (int i = 0; i <= Constants.lastLevel; i++)
+        { // Infinite level is currently saved as "lvl0HighScore"
             overallScore += PlayerPrefs.GetFloat("lvl" + i + "HighScore");
         }
 

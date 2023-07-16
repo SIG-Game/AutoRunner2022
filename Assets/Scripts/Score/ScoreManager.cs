@@ -7,65 +7,61 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
     public float Score
     {
-        get { return score; }
+        get => score;
         private set { score = value; }
     }
 
     [SerializeField]
     private TextMeshProUGUI scoreText;
+    [SerializeField]
+    private Transform playerTransform;
 
-    private const float moveMulti4Pts = 10.0f, // The value to multiply the distance traveled by
-                        enemyFelledPts = 100.0f; // The points killing an enemy is worth
+    [SerializeField]
+    private float playerDistPtsMultiplier = 10.0f;
+    [SerializeField]
+    private float enemyFelledPts = 100.0f;
+    [SerializeField]
+    private float dispScoreTransSpeed = 100.0f;
 
     private float score,
                   displayScore,
-                  pastScore,
-                  startY,
-                  transitionSpeed = 100.0f;
+                  pastHighScore,
+                  startY;
 
-    public void SetStartY(float y) { startY = y; }
+    public void SetStartY() { startY = playerTransform.position.y; }
     
     // Pass a positive for increase, negative for decrease
     public void ChangeScore(float amount) { Score += amount; }
+
+    public void EnemyFelled() { ChangeScore(enemyFelledPts); }
+
+    public void BossFelled(float pts) { ChangeScore(pts); }
 
     public void UpdateScoreDisplay()
     {
         scoreText.text = string.Format("Score: {0:00000}", displayScore);
     }
 
-    public void EnemyFelled()
+    public void LevelEnd()
     {
-        ChangeScore(enemyFelledPts);
-    }
+        if (playerTransform.position.y > startY)
+        {
+            ChangeScore(playerDistPtsMultiplier * (playerTransform.position.y - startY));
+        }
 
-    public void BossFelled(float pts)
-    {
-        ChangeScore(pts);
-    }
-
-    public void AbruptLevelEnd()
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        LevelEnd(player.transform.position.y);
-    }
-
-    public void LevelEnd(float curY)
-    {
-        if (curY > startY) { ChangeScore(moveMulti4Pts * (curY - startY)); }
-
-        Score = (pastScore > Score) ? pastScore : Score;
+        Score = (pastHighScore > Score) ? pastHighScore : Score;
         PlayerPrefs.SetFloat("lvl" + SceneManager.GetActiveScene().buildIndex + "HighScore", Score);
     }
 
     private void Awake()
     {
         Instance = this;
-        pastScore = PlayerPrefs.GetFloat("lvl" + SceneManager.GetActiveScene().buildIndex + "HighScore");
+        pastHighScore = PlayerPrefs.GetFloat("lvl" + SceneManager.GetActiveScene().buildIndex + "HighScore");
     }
 
     private void Update()
     {
-        displayScore = Mathf.MoveTowards(displayScore, score, transitionSpeed * Time.deltaTime);
+        displayScore = Mathf.MoveTowards(displayScore, score, dispScoreTransSpeed * Time.deltaTime);
         UpdateScoreDisplay();
     }
 }
