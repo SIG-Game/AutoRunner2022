@@ -6,14 +6,15 @@ public class OverallScoreManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI highScore;
 
-    private float overallScore;
-
     private void Awake()
     {
-        for (int i = 0; i <= Constants.lastLevel; i++)
-        { // Infinite level is currently saved as "lvl0HighScore"
+        float overallScore = 0;
+
+        for (int i = 1; i <= Constants.lastLevel; i++)
+        {
             overallScore += PlayerPrefs.GetFloat("lvl" + i + "HighScore");
         }
+        overallScore += PlayerPrefs.GetFloat("lvlIHighScore");
 
         highScore.text = string.Format("Overall Score: {0:00000}", overallScore);
     }

@@ -6,7 +6,7 @@ public class ScoreDisplayManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI highScore;
     [SerializeField]
-    private int level;
+    private char level;
 
     private void Awake()
     {

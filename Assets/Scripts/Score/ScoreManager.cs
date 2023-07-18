@@ -26,9 +26,9 @@ public class ScoreManager : MonoBehaviour
     private float score,
                   displayScore,
                   pastHighScore,
-                  startY;
+                  startPlayerYPos;
 
-    public void SetStartY() { startY = playerTransform.position.y; }
+    private string sceneHighScore;
     
     // Pass a positive for increase, negative for decrease
     public void ChangeScore(float amount) { Score += amount; }
@@ -44,19 +44,30 @@ public class ScoreManager : MonoBehaviour
 
     public void LevelEnd()
     {
-        if (playerTransform.position.y > startY)
+        if (playerTransform.position.y > startPlayerYPos)
         {
-            ChangeScore(playerDistPtsMultiplier * (playerTransform.position.y - startY));
+            ChangeScore(playerDistPtsMultiplier * (playerTransform.position.y - startPlayerYPos));
         }
 
         Score = (pastHighScore > Score) ? pastHighScore : Score;
-        PlayerPrefs.SetFloat("lvl" + SceneManager.GetActiveScene().buildIndex + "HighScore", Score);
+        PlayerPrefs.SetFloat(sceneHighScore, Score);
     }
 
     private void Awake()
     {
         Instance = this;
-        pastHighScore = PlayerPrefs.GetFloat("lvl" + SceneManager.GetActiveScene().buildIndex + "HighScore");
+        startPlayerYPos = playerTransform.position.y;
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (buildIndex == 0)
+        {
+            sceneHighScore = "lvlIHighScore";
+        }
+        else
+        {
+            sceneHighScore = "lvl" + buildIndex + "HighScore";
+        }
+        pastHighScore = PlayerPrefs.GetFloat(sceneHighScore);
     }
 
     private void Update()

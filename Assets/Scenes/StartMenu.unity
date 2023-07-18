@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 960907516}
-  buttonTxt: {fileID: 584429204}
+  level: 73
 --- !u!1 &997309551
 GameObject:
   m_ObjectHideFlags: 0

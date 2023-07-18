@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 139207768}
-  buttonTxt: {fileID: 936394003}
+  level: 57
 --- !u!114 &139207768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 431205720}
-  buttonTxt: {fileID: 1954330697}
+  level: 0
 --- !u!114 &431205720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 610873929}
-  buttonTxt: {fileID: 1002323789}
+  level: 53
 --- !u!114 &610873929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,7 +1910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 725179293}
-  buttonTxt: {fileID: 126234973}
+  level: 49
 --- !u!114 &725179293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2851,7 +2851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 1197949185}
-  buttonTxt: {fileID: 812052125}
+  level: 51
 --- !u!114 &1197949185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,7 +3364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 1429136945}
-  buttonTxt: {fileID: 2033734306}
+  level: 54
 --- !u!114 &1429136945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3579,7 +3579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 1570348786}
-  buttonTxt: {fileID: 1750245650}
+  level: 52
 --- !u!114 &1570348786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3998,7 +3998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 1708839341}
-  buttonTxt: {fileID: 1011941128}
+  level: 50
 --- !u!114 &1708839341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4486,7 +4486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 1908476168}
-  buttonTxt: {fileID: 46581211}
+  level: 56
 --- !u!114 &1908476168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5420,7 +5420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 2066491670}
-  buttonTxt: {fileID: 286949243}
+  level: 55
 --- !u!114 &2066491670
 MonoBehaviour:
   m_ObjectHideFlags: 0
