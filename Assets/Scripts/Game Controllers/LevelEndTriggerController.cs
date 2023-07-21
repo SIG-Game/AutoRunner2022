@@ -6,18 +6,25 @@ public class LevelEndTriggerController : MonoBehaviour
     [SerializeField]
     private int indexForNextScene;
 
-    private const int lastLevel = 2;
-
     private void Start()
     {
-        indexForNextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        { // This logic is temporary for the current non-infinite infinite level
+            indexForNextScene = Constants.lastLevel + 1;
+        }
+        else
+        {
+            indexForNextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if ((SceneManager.GetActiveScene().buildIndex) == lastLevel)
+            ScoreManager.Instance.LevelEnd();
+
+            if ((SceneManager.GetActiveScene().buildIndex) == Constants.lastLevel)
             {
                 Debug.Log("YOU WIN!");
                 SceneManager.LoadScene("StartMenu");
