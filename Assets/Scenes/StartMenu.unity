@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: {fileID: 960907516}
-  level: 73
+  level: Inf
 --- !u!1 &997309551
 GameObject:
   m_ObjectHideFlags: 0

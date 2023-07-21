@@ -19,17 +19,13 @@ public class ScoreManager : MonoBehaviour
     private int dispScoreTransSpeed = 100;
 
     private int score,
-                displayScore,
-                startPlayerYPos;
-
+                displayScore;
+    private float startPlayerYPos;
     private string sceneHighScoreKey;
-    
-    // Pass a positive for increase, negative for decrease
-    public void ChangeScore(int amount) { score += amount; }
 
-    public void EnemyFelled() { ChangeScore(enemyFelledPts); }
+    public void EnemyFelled() { score += enemyFelledPts; }
 
-    public void BossFelled(int pts) { ChangeScore(pts); }
+    public void BossFelled(int pts) { score += pts; }
 
     public void UpdateScoreDisplay()
     {
@@ -42,7 +38,7 @@ public class ScoreManager : MonoBehaviour
 
         if (playerTransform.position.y > startPlayerYPos)
         {
-            ChangeScore(playerDistPtsMultiplier * (int) (playerTransform.position.y - startPlayerYPos));
+            score += playerDistPtsMultiplier * (int) (playerTransform.position.y - startPlayerYPos);
         }
 
         if (score > pastHighScore) { PlayerPrefs.SetInt(sceneHighScoreKey, score); }
@@ -51,12 +47,12 @@ public class ScoreManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        startPlayerYPos = (int) playerTransform.position.y;
+        startPlayerYPos = playerTransform.position.y;
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
 
         if (buildIndex == 0)
         {
-            sceneHighScoreKey = "lvlIHighScore";
+            sceneHighScoreKey = "lvlInfHighScore";
         }
         else
         {
