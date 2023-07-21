@@ -5,11 +5,6 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
-    public float Score
-    {
-        get => score;
-        private set { score = value; }
-    }
 
     [SerializeField]
     private TextMeshProUGUI scoreText;
@@ -17,25 +12,24 @@ public class ScoreManager : MonoBehaviour
     private Transform playerTransform;
 
     [SerializeField]
-    private float playerDistPtsMultiplier = 10.0f;
+    private int playerDistPtsMultiplier = 10;
     [SerializeField]
-    private float enemyFelledPts = 100.0f;
+    private int enemyFelledPts = 100;
     [SerializeField]
-    private float dispScoreTransSpeed = 100.0f;
+    private int dispScoreTransSpeed = 100;
 
-    private float score,
-                  displayScore,
-                  pastHighScore,
-                  startPlayerYPos;
+    private int score,
+                displayScore,
+                startPlayerYPos;
 
-    private string sceneHighScore;
+    private string sceneHighScoreKey;
     
     // Pass a positive for increase, negative for decrease
-    public void ChangeScore(float amount) { Score += amount; }
+    public void ChangeScore(int amount) { score += amount; }
 
     public void EnemyFelled() { ChangeScore(enemyFelledPts); }
 
-    public void BossFelled(float pts) { ChangeScore(pts); }
+    public void BossFelled(int pts) { ChangeScore(pts); }
 
     public void UpdateScoreDisplay()
     {
@@ -44,35 +38,35 @@ public class ScoreManager : MonoBehaviour
 
     public void LevelEnd()
     {
+        int pastHighScore = PlayerPrefs.GetInt(sceneHighScoreKey);
+
         if (playerTransform.position.y > startPlayerYPos)
         {
-            ChangeScore(playerDistPtsMultiplier * (playerTransform.position.y - startPlayerYPos));
+            ChangeScore(playerDistPtsMultiplier * (int) (playerTransform.position.y - startPlayerYPos));
         }
 
-        Score = (pastHighScore > Score) ? pastHighScore : Score;
-        PlayerPrefs.SetFloat(sceneHighScore, Score);
+        if (score > pastHighScore) { PlayerPrefs.SetInt(sceneHighScoreKey, score); }
     }
 
     private void Awake()
     {
         Instance = this;
-        startPlayerYPos = playerTransform.position.y;
+        startPlayerYPos = (int) playerTransform.position.y;
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
 
         if (buildIndex == 0)
         {
-            sceneHighScore = "lvlIHighScore";
+            sceneHighScoreKey = "lvlIHighScore";
         }
         else
         {
-            sceneHighScore = "lvl" + buildIndex + "HighScore";
+            sceneHighScoreKey = "lvl" + buildIndex + "HighScore";
         }
-        pastHighScore = PlayerPrefs.GetFloat(sceneHighScore);
     }
 
     private void Update()
     {
-        displayScore = Mathf.MoveTowards(displayScore, score, dispScoreTransSpeed * Time.deltaTime);
+        displayScore = (int) Mathf.MoveTowards(displayScore, score, dispScoreTransSpeed * Time.deltaTime);
         UpdateScoreDisplay();
     }
 }
