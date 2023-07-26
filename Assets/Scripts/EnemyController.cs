@@ -60,7 +60,8 @@ public class EnemyController : MonoBehaviour
     public void Die()
     {
         if (player != null) {  player.enemyHash.Remove(transform); }
-        
+
+        ScoreManager.Instance.EnemyFelled();
         Object.Destroy(this.gameObject);
     }
 
