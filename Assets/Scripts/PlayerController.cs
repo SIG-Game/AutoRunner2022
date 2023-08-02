@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int currentHealth;
     [SerializeField]
-    private int healthDecayDamage = 5;
+    private int healthDecayDamage;
     [SerializeField]
-    private float healthDecayTime = 5f;
+    private float healthDecayTime;
     [SerializeField]
     private float fireRate = 1f;
     private float nextFire;
