@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724d9f92de6ccbb4b9e29fc8792b00de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 0}
-  prefabSpawnInterval: 2
-  maxSpawnedPrefab: 30
+  prefabToSpawn: {fileID: 4486936308299264061, guid: 8fd34ff5644dba2488fc122c24d515f3, type: 3}
+  player: {fileID: 0}
+  enemySpawnIntervalSeconds: 2
+  maxSpawnedEnemies: 30
   minSpawnPosition: {x: 0, y: 0}
   maxSpawnPosition: {x: 0, y: 0}

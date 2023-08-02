@@ -1,44 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] 
-    protected GameObject prefabToSpawn;
     [SerializeField]
-    private float prefabSpawnInterval;
+    private GameObject prefabToSpawn;
     [SerializeField]
-    private int maxSpawnedPrefab;
-    [SerializeField] 
+    private PlayerController player;
+    [SerializeField]
+    private float enemySpawnIntervalSeconds;
+    [SerializeField]
+    private int maxSpawnedEnemies;
+    [SerializeField]
     private Vector2 minSpawnPosition;
-    [SerializeField] 
+    [SerializeField]
     private Vector2 maxSpawnPosition;
 
-    private int numPrefabs;
+    private int numEnemies;
     private float spawnTimer;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        numPrefabs = 0;
+        numEnemies = 0;
         spawnTimer = 0f;
-        if (numPrefabs < maxSpawnedPrefab)
+
+        if (numEnemies < maxSpawnedEnemies)
         {
             SpawnPrefab();
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (numPrefabs >= maxSpawnedPrefab)
+        if (numEnemies >= maxSpawnedEnemies)
         {
             return;
         }
+
         spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= prefabSpawnInterval)
+        if (spawnTimer >= enemySpawnIntervalSeconds)
         {
             spawnTimer = 0f;
             SpawnPrefab();
@@ -47,7 +47,23 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnPrefab()
     {
-        GameObject spawnedPrefab = Instantiate(prefabToSpawn, new Vector2(Random.Range(minSpawnPosition.x, maxSpawnPosition.y), Random.Range(minSpawnPosition.x, maxSpawnPosition.y)), Quaternion.identity, transform);
-        numPrefabs++;
+        Vector3 spawnPosition = new Vector3(
+            Random.Range(minSpawnPosition.x, maxSpawnPosition.x),
+            Random.Range(minSpawnPosition.y, maxSpawnPosition.y), 0f);
+
+        GameObject spawnedEnemy = Instantiate(prefabToSpawn,
+            spawnPosition, Quaternion.identity, transform);
+
+        EnemyController spawnedEnemyController =
+            spawnedEnemy.GetComponent<EnemyController>();
+        spawnedEnemyController.SetPlayer(player);
+        spawnedEnemyController.SetSpawner(this);
+
+        numEnemies++;
+    }
+
+    public void SpawnedEnemyDestroyed()
+    {
+        numEnemies--;
     }
 }
