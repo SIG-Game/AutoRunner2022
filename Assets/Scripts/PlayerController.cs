@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float fireRate = 1f;
     private float nextFire;
+    private bool canPlayerMove;
 
     [SerializeField]
     private HealthBar healthBar;
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     public int GetCurrentHealth() => currentHealth;
 
+    public void SetCanPlayerMove(bool boo) { canPlayerMove = boo; }
+
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -37,13 +40,14 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         playerColl = this.GetComponent<Collider2D>();
         nextFire = Time.time;
+        canPlayerMove = true;
     }
 
     private void Update()
     {
         if (PauseController.Instance.GamePaused) {  return;  }
 
-        if (Input.touchCount > 0)
+        if (canPlayerMove && Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -53,7 +57,7 @@ public class PlayerController : MonoBehaviour
                 targetPosition = Camera.main.ScreenToWorldPoint(touch.position);
             }
         }
-        else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        else if (canPlayerMove && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
@@ -112,7 +116,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private Transform GetClosestEnemy()
+    public Transform GetClosestEnemy()
     {
         Transform closestEnem = null;
         float distToClosestEnem = Mathf.Infinity;
