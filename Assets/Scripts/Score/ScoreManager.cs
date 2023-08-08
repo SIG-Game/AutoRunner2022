@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private int enemyFelledPts = 100;
     [SerializeField]
-    private int dispScoreTransSpeed = 100;
+    private float dispScoreTransSpeed = 1.0f;
 
     private int score,
                 displayScore;
@@ -62,7 +62,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        displayScore = (int) Mathf.MoveTowards(displayScore, score, dispScoreTransSpeed * Time.deltaTime);
+        displayScore = (int) Mathf.MoveTowards(displayScore, score, dispScoreTransSpeed);
         UpdateScoreDisplay();
     }
 }

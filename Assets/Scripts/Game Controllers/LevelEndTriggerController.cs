@@ -33,7 +33,7 @@ public class LevelEndTriggerController : MonoBehaviour
             {
                 SceneManager.LoadScene(indexForNextScene);
 
-                if (indexForNextScene > PlayerPrefs.GetInt("highestLvlUnlock"))
+                if (indexForNextScene != (Constants.lastLevel + 1) && indexForNextScene > PlayerPrefs.GetInt("highestLvlUnlock"))
                 {
                     PlayerPrefs.SetInt("highestLvlUnlock", indexForNextScene);
                 }

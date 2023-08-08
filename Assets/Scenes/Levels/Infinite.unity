@@ -309,7 +309,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7163193357137035464, guid: a39625386e74eb343a3957368164edd2, type: 3}
       propertyPath: m_Name
-      value: BackgroundPack
+      value: Background Pack
       objectReference: {fileID: 0}
     - target: {fileID: 7163193357137035471, guid: a39625386e74eb343a3957368164edd2, type: 3}
       propertyPath: m_RootOrder
@@ -831,6 +831,10 @@ PrefabInstance:
       propertyPath: cardImage
       value: 
       objectReference: {fileID: 822005814}
+    - target: {fileID: 1915223110202709602, guid: 83bc90002fa0132459bd1851e60a801d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2807609955077250438, guid: 83bc90002fa0132459bd1851e60a801d, type: 3}
       propertyPath: m_Name
       value: Right Card
@@ -1372,6 +1376,10 @@ PrefabInstance:
       propertyPath: cardImage
       value: 
       objectReference: {fileID: 1760837237}
+    - target: {fileID: 1915223110202709602, guid: 83bc90002fa0132459bd1851e60a801d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2807609955077250438, guid: 83bc90002fa0132459bd1851e60a801d, type: 3}
       propertyPath: m_Name
       value: Left Card
@@ -1493,6 +1501,46 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5010596297363583878, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596297363583878, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298045740408, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298045740408, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298195272544, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298195272544, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298195272551, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298195272551, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298195272551, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298195272551, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -690
+      objectReference: {fileID: 0}
     - target: {fileID: 5010596298839452026, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -1581,6 +1629,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5010596298867764448, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298867764448, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298867764448, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596298867764448, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -883
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596299387327788, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596299387327788, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596299387327788, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596299387327788, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -785
+      objectReference: {fileID: 0}
     - target: {fileID: 5010596299387327789, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1609,21 +1689,29 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5010596299402493660, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010596299402493660, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -954
+      objectReference: {fileID: 0}
     - target: {fileID: 6209228682206637936, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 178.2321
+      value: 212.8652
       objectReference: {fileID: 0}
     - target: {fileID: 6209228682206637936, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 97.388
+      value: 80.0715
       objectReference: {fileID: 0}
     - target: {fileID: 6209228682206637936, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -429
+      value: -391
       objectReference: {fileID: 0}
     - target: {fileID: 6209228682206637936, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -68
+      value: -71
       objectReference: {fileID: 0}
     - target: {fileID: 8623071313778982621, guid: 0fd516930bcec8145acf2dd70f627ede, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1696,6 +1784,10 @@ PrefabInstance:
       propertyPath: cardImage
       value: 
       objectReference: {fileID: 2074262048}
+    - target: {fileID: 1915223110202709602, guid: 83bc90002fa0132459bd1851e60a801d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2807609955077250438, guid: 83bc90002fa0132459bd1851e60a801d, type: 3}
       propertyPath: m_Name
       value: Middle Card

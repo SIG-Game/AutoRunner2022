@@ -1,23 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class CardHandler : MonoBehaviour
+public class CardHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField]
     private string cardName = "null";
     [SerializeField]
     private float cooldown = 15;
     [SerializeField]
-    private PlayerController player;
-    [SerializeField]
     private CardManager manager;
     private Image cardImage;
     private Button cardButton;
+    private Vector2 cardOriginPos;
+    private RectTransform rectTransform;
 
     private void Awake()
     {
         cardImage = GetComponent<Image>();
         cardButton = GetComponent<Button>();
+        rectTransform = GetComponent<RectTransform>();
         CardIsPlayable();
     }
 
@@ -34,12 +36,25 @@ public class CardHandler : MonoBehaviour
         Invoke("CardIsPlayable", cooldown);
     }
 
-    public void OnTap_PlayCard()
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        CardOnCooldown();
-        player.SetCanPlayerMove(false);
-        // Going to have to do stuff here to perform the tap drag then let go casting
-        player.SetCanPlayerMove(true);
-        manager.PlayCard(cardName);
+        cardOriginPos = rectTransform.anchoredPosition;
+        manager.PlayerCantMove();
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        transform.position = Input.mousePosition;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        manager.PlayerCanMove();
+        rectTransform.anchoredPosition = cardOriginPos;
+
+        if (manager.PlayCard(cardName))
+        {
+            CardOnCooldown();
+        }
     }
 }
