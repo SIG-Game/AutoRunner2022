@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.005
-  maxHealth: 10
+  maxHealth: 100
   currentHealth: 0
   fireRate: 1
   projectile: {fileID: 9051901607927635485, guid: e0eda30b57d8cef4e971435c7bf09c0d, type: 3}
