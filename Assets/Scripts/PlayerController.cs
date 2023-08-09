@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int currentHealth;
     [SerializeField]
+    private int healthDecayDamage;
+    [SerializeField]
+    private float healthDecayTime;
+    [SerializeField]
     private float fireRate = 1f;
     private float nextFire;
-    private bool canPlayerMove;
 
     [SerializeField]
     private HealthBar healthBar;
@@ -31,8 +34,6 @@ public class PlayerController : MonoBehaviour
 
     public int GetCurrentHealth() => currentHealth;
 
-    public void SetCanPlayerMove(bool boo) { canPlayerMove = boo; }
-
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -40,14 +41,14 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         playerColl = this.GetComponent<Collider2D>();
         nextFire = Time.time;
-        canPlayerMove = true;
+        InvokeRepeating("HealthDecay", healthDecayTime, healthDecayTime);
     }
 
     private void Update()
     {
-        if (PauseController.Instance.GamePaused) {  return;  }
+        if (PauseController.Instance.GamePaused) { return; }
 
-        if (canPlayerMove && Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -57,16 +58,16 @@ public class PlayerController : MonoBehaviour
                 targetPosition = Camera.main.ScreenToWorldPoint(touch.position);
             }
         }
-        else if (canPlayerMove && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        if (rb2D.position == targetPosition && enemyHash.Count > 0) {  PeriodicRangedAttack();  }
+        if (rb2D.position == targetPosition && enemyHash.Count > 0) { PeriodicRangedAttack(); }
 
-        if (Input.GetKeyDown(KeyCode.H)) {  Heal(20);  }
+        if (Input.GetKeyDown(KeyCode.H)) { Heal(20); }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {  TakeDamage(20); }
+        if (Input.GetKeyDown(KeyCode.Space)) { TakeDamage(20); }
 
         if (GetCurrentHealth() <= 0)
         {
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
 
-        if (currentHealth < 0) {  currentHealth = 0;  }
+        if (currentHealth < 0) { currentHealth = 0; }
     }
 
     public void Heal(int heal)
@@ -97,7 +98,12 @@ public class PlayerController : MonoBehaviour
         currentHealth += heal;
         healthBar.SetHealth(currentHealth);
 
-        if (currentHealth > maxHealth) {  currentHealth = maxHealth;  }
+        if (currentHealth > maxHealth) { currentHealth = maxHealth; }
+    }
+
+    public void HealthDecay()
+    {
+        TakeDamage(healthDecayDamage);
     }
 
     private void PeriodicRangedAttack()
@@ -116,7 +122,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public Transform GetClosestEnemy()
+    private Transform GetClosestEnemy()
     {
         Transform closestEnem = null;
         float distToClosestEnem = Mathf.Infinity;
