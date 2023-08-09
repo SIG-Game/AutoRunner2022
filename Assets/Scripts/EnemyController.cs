@@ -5,9 +5,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
     [SerializeField]
-    private int maxHealth = 10;
+    protected int maxHealth = 10;
     [SerializeField]
-    private int currentHealth;
+    protected int currentHealth;
     [SerializeField]
     private float fireRate = 1f;
     private float nextFire;
@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
 
     // This function is used to have enemies both take and recieve damage.
     // Call change health with negative values to take damage, and positive values to heal damage.
-    public void ChangeHealth(int healthLost)
+    public virtual void ChangeHealth(int healthLost)
     {
         currentHealth += healthLost;
 
