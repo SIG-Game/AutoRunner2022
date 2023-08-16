@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class ScoreDisplayHandler : MonoBehaviour
+public class HighScoreController : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI highScore;

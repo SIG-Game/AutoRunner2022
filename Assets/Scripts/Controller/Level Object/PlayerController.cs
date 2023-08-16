@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool canPlayerMove;
 
     [SerializeField]
-    private HealthBarManager healthBar;
+    private HealthBarController healthBar;
     [SerializeField]
     private GameObject projectile;
     private Rigidbody2D rb2D;
@@ -41,13 +41,13 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        SetHealth(currentHealth -= damage);
+        SetHealth(currentHealth - damage);
         healthBar.SetHealth(currentHealth);
     }
 
     public void Heal(int heal)
     {
-        SetHealth(currentHealth += heal);
+        SetHealth(currentHealth + heal);
         healthBar.SetHealth(currentHealth);
     }
 
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (PauseManager.Instance.GamePaused) { return; }
+        if (PauseController.Instance.GamePaused) { return; }
 
         if (canPlayerMove && Input.touchCount > 0)
         {

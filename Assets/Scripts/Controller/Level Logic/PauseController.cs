@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class PauseManager : MonoBehaviour {
-    public static PauseManager Instance;
+public class PauseController : MonoBehaviour {
+    public static PauseController Instance;
 
     public bool GamePaused {
         get => gamePaused;

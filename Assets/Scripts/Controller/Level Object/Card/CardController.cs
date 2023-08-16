@@ -2,18 +2,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public abstract class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public abstract class CardController : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField]
-    protected float cooldown = 15;
+    private float cooldown = 15;
     [SerializeField]
     protected PlayerController player;
-    protected Image cardImage;
-    protected Button cardButton;
-    protected Vector2 cardOriginPos;
-    protected RectTransform rectTransform;
+    private Image cardImage;
+    private Button cardButton;
+    private Vector2 cardOriginPos;
+    private RectTransform rectTransform;
 
-    public abstract bool TryPlayCard();
+    protected abstract bool TryPlayCard();
 
     public void OnBeginDrag(PointerEventData eventData)
     {

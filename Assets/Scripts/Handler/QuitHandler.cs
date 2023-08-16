@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class QuitHandler : MonoBehaviour
 {
-    public void QuitButton_OnClick()
+    public void Quit()
     {
         Debug.Log("Quit");
         Application.Quit();

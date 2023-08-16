@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class RightCard : Card
+public class KillCloseEnemyCard : CardController
 {
-    public override bool TryPlayCard()
+    protected override bool TryPlayCard()
     {
         Transform enem = player.GetClosestEnemy();
 

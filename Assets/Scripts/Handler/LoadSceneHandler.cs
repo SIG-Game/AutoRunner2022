@@ -6,7 +6,7 @@ public class LoadSceneHandler : MonoBehaviour
     [SerializeField]
     private string nameOfSceneToLoad;
 
-    public void LoadSceneButton_OnClick()
+    public void LoadScene()
     {
         try
         {

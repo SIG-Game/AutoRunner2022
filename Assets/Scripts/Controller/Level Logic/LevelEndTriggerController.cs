@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelEndTriggerManager : MonoBehaviour
+public class LevelEndTriggerController : MonoBehaviour
 {
     [SerializeField]
     private int indexForNextScene;

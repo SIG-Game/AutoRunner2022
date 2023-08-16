@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelLockingHandler : MonoBehaviour
+public class LevelLockingManager : MonoBehaviour
 {
     [SerializeField]
     private Button[] lvlButtons;
