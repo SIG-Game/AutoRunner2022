@@ -16,11 +16,13 @@ public class EnemyController : MonoBehaviour
     private GameObject projectile;
     [SerializeField]
     private PlayerController player;
+
     private Rigidbody2D rb2D;
     private Vector2 targetPosition;
     private SpriteRenderer spriteRenderer;
     private Collider2D enemyColl;
     private ProjectileController proj;
+    private EnemySpawner spawner;
 
     private void Awake()
     {
@@ -36,6 +38,14 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         PeriodicRangedAttack();
+    }
+
+    private void OnDestroy()
+    {
+        if (spawner != null)
+        {
+            spawner.SpawnedEnemyDestroyed();
+        }
     }
 
     private void OnBecameVisible() {  player.enemyHash.Add(transform);  }
@@ -60,7 +70,8 @@ public class EnemyController : MonoBehaviour
     public void Die()
     {
         if (player != null) {  player.enemyHash.Remove(transform); }
-        
+
+        ScoreManager.Instance.EnemyFelled();
         Object.Destroy(this.gameObject);
     }
 
@@ -98,5 +109,15 @@ public class EnemyController : MonoBehaviour
             targetPosition = rb2D.position
                 + (Vector2)(Quaternion.Euler(0f, 0f, angle) * Vector3.right) * distance;
         }
+    }
+
+    public void SetPlayer(PlayerController player)
+    {
+        this.player = player;
+    }
+
+    public void SetSpawner(EnemySpawner spawner)
+    {
+        this.spawner = spawner;
     }
 }
