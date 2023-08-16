@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   borderSprite: {fileID: 7163193357132298336}
   side: 0
+  levelHeight: 20
 --- !u!1 &7163193356134351331
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   borderSprite: {fileID: 7163193356813174211}
   side: 1
+  levelHeight: 20
 --- !u!1 &7163193357132298337
 GameObject:
   m_ObjectHideFlags: 0

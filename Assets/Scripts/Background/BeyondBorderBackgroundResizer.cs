@@ -16,6 +16,7 @@ public class BeyondBorderBackgroundResizer : MonoBehaviour
     private SpriteRenderer beyondBorderBgSprite; 
     [SerializeField] private SpriteRenderer borderSprite;
     [SerializeField] private Side side;
+    [SerializeField] private float levelHeight;
 
 
     private void Awake()
@@ -58,7 +59,7 @@ public class BeyondBorderBackgroundResizer : MonoBehaviour
         {
             // The sizing factor is calculated, with the sprite renderer transformed to fill an empty side of the screen.
             float bgFillWidth = Mathf.Abs(borderEdge - cameraEdge);
-            float bgFillHeight = currentCameraSize.y;
+            float bgFillHeight = levelHeight;//currentCameraSize.y;
             transform.position = new Vector2((borderEdge + cameraEdge) / 2, Camera.main.transform.position.y);
             beyondBorderBgSprite.size = new Vector2(bgFillWidth / transform.localScale.x, bgFillHeight / transform.localScale.y);
         }
