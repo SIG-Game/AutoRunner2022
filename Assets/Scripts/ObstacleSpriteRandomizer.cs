@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObstacleRandomSprite : MonoBehaviour
+public class ObstacleSpriteRandomizer : MonoBehaviour
 {
     [SerializeField]
     private Sprite[] sprites;
