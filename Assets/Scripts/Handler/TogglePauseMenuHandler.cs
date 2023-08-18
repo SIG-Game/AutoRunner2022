@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PauseHandler : MonoBehaviour
+public class TogglePauseMenuHandler : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
 
-    public void Pause()
+    public void TogglePauseMenu()
     {
         PauseController.Instance.GamePaused = !PauseController.Instance.GamePaused;
         pauseMenuUI.SetActive(PauseController.Instance.GamePaused);
