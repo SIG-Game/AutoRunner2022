@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class Constants : MonoBehaviour
 {
-    public const int lastLevel = 2;
+    public const int lastLevel = 3;
 }
